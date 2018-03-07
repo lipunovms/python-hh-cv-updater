@@ -1,8 +1,13 @@
-from selenium import webdriver
 import time
+from selenium import webdriver
 import config
 
-browser = webdriver.PhantomJS()
+
+dcap = webdriver.DesiredCapabilities.PHANTOMJS.copy()
+dcap['phantomjs.page.customHeaders.User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) ' \
+                                                                  'AppleWebKit/537.36 (KHTML, like Gecko) ' \
+                                                                  'Chrome/39.0.2171.95 Safari/537.36'
+browser = webdriver.PhantomJS(desired_capabilities=dcap)
 
 
 def hh_login():
