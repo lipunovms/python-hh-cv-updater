@@ -9,7 +9,7 @@ dcap = webdriver.DesiredCapabilities.PHANTOMJS.copy()
 dcap['phantomjs.page.customHeaders.User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) ' \
                                                                   'AppleWebKit/537.36 (KHTML, like Gecko) ' \
                                                                   'Chrome/39.0.2171.95 Safari/537.36'
-browser = webdriver.PhantomJS(desired_capabilities=dcap)
+browser = webdriver.PhantomJS("./phantomjs",desired_capabilities=dcap)
 
 
 def hh_login():
@@ -33,16 +33,14 @@ def hh_login():
 def refresh_cv():
     browser.get('https://hh.ru/applicant/resumes')
     time.sleep(5)
-    #  find refresh icons
-    refresh_icons = browser.find_elements_by_class_name('bloko-icon-link')[1:]
+    #  find refresh button
+    refresh_button = browser.find_element_by_xpath("//div[@id='HH-React-Root']//div[3]//div[1]//div[5]//div[1]//div[1]//div[1]//div[1]//span[1]//button[1]")
 
-    if refresh_icons:
-        for refresh_icon in refresh_icons:
-            try:
-                refresh_icon.click()
-                time.sleep(5)
-            except Exception as e:
-                print(e)
+    if refresh_button:
+        try:
+            refresh_button.click()
+        except Exception as e:
+            print(e)
 
 
 def main():

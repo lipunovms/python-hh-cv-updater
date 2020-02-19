@@ -4,3 +4,5 @@ ghostdriver.log
 __pycache__/
 phantomjs.exe
 geckodriver.log
+config.py
+phantomjs
