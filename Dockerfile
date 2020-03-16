@@ -11,8 +11,9 @@ RUN wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 &&\
 
 WORKDIR /app
 
-COPY requirements.txt cvupdater.py ./
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+COPY cvupdater.py ./
 
 CMD [ "python", "./cvupdater.py" ]
 

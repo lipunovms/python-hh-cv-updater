@@ -54,5 +54,9 @@ def main():
     refresh_cv()
 
 if __name__ == '__main__':
-    main()
-    time.sleep(int(refresh_interval)*60)
+    while(True):
+        try:
+            main()
+            time.sleep(int(refresh_interval)*60)
+        except Exception as ex:
+            print(ex)
