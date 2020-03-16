@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+ cvupdater:
+   container_name: cvupdater
+   build:
+     context: .
+   env_file:
+     .env

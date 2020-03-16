@@ -1,15 +1,20 @@
-#!/usr/bin/python3
-
+import os
 import time
 from selenium import webdriver
-import config
 
+hh_username = os.environ["HH_USERNAME"]
+hh_password = os.environ["HH_PASSWORD"]
+
+if "CV_REFRESH_INTERVAL" in os.environ:
+    refresh_interval = os.environ["CV_REFRESH_INTERVAL"]
+else:
+    refresh_interval = 300
 
 dcap = webdriver.DesiredCapabilities.PHANTOMJS.copy()
 dcap['phantomjs.page.customHeaders.User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) ' \
                                                                   'AppleWebKit/537.36 (KHTML, like Gecko) ' \
                                                                   'Chrome/39.0.2171.95 Safari/537.36'
-browser = webdriver.PhantomJS("./phantomjs",desired_capabilities=dcap)
+browser = webdriver.PhantomJS(desired_capabilities=dcap)
 
 
 def hh_login():
@@ -18,12 +23,12 @@ def hh_login():
     #  fill login
     login_input = browser.find_element_by_name("username")
     login_input.clear()
-    login_input.send_keys(config.USERNAME)
+    login_input.send_keys(hh_username)
 
     #  fill password
     password_input = browser.find_element_by_name("password")
     password_input.clear()
-    password_input.send_keys(config.PASSWORD)
+    password_input.send_keys(hh_password)
 
     #  click "submit"
     submit_button = browser.find_element_by_xpath("//input[@type='submit']")
@@ -50,3 +55,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    time.sleep(int(refresh_interval)*60)
