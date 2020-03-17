@@ -50,6 +50,7 @@ def refresh_cv():
 
 def main():
     time.sleep(2)
+    browser.delete_all_cookies()
     hh_login()
     refresh_cv()
 
