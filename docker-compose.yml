@@ -3,6 +3,7 @@ version: "2"
 services:
  cvupdater:
    container_name: cvupdater
-   image: lipunovms/cvupdater:latest
+   build:
+     context: .
    env_file:
      - .env
