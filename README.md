@@ -13,7 +13,7 @@ docker run -d -e "HH_USERNAME=your_username" -e "HH_PASSWORD=your_password" -e C
 or you can use ready image:
 
 ```
-docker run -d -e "HH_USERNAME=your_username" -e "HH_PASSWORD=your_password" -e HH_RESUMEID=your_cv_id lipunovms/cvupdater:1.0
+docker run -d -e "HH_USERNAME=your_username" -e "HH_PASSWORD=your_password" -e HH_RESUMEID=your_cv_id lipunovms/cvupdater:latest
 ```
 
 ## docker-compose
